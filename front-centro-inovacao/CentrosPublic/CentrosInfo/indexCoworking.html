@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Detalhes do Coworking</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <a href="../../index.html" class="home-button">
+            <img src="../../public/home.png" alt="Home" class="home-icon">
+        </a>
+        <div class="logo">
+            <img src="../../public/bandeira.png" alt="Bandeira de Santa Catarina" class="bandeira">
+            <h1>Conecta Inovação</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="park-details">
+                <h2 id="nome-centro">Centro de Inovação Acate - Downtown</h2>
+                <p><strong>Tipo:</strong> <span>Coworking</span></p>
+                <p><strong>Estado:</strong> <span id="estado">Estado exemplo</span></p>
+                <p><strong>Cidade:</strong> <span id="cidade">Florianópolis</span></p>
+                <p><strong>Endereço:</strong> <span id="endereco">Rua Exemplo, 123</span></p>
+                <p><strong>CEP:</strong> <span id="cep">CEP Exemplo</span></p>
+                <p><strong>Descrição:</strong> <span id="descricao">Um centro de inovação dedicado à pesquisa e desenvolvimento de novas tecnologias e soluções.</span></p>
+                <p><strong>Data de fundação:</strong> <span id="data">2024-06-14</span></p>
+                <p><strong>Telefone:</strong> <span id="tel">Telefone exemplo</span></p>
+                <p><strong>Link:</strong> <a href="#" id="site-link" target="_blank" class="site-link">www.exemplo.com</a></p>
+                <p><strong>Horário de funcionamento:</strong> <span id="horario_funcionamento">CEP Exemplo</span></p>
+                <div class="buttons">
+                    <button onClick="history_back()" class="back-button" >Voltar</button>
+                    <script> function history_back() {window.history.back();}</script>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString)
+        const idAgente = urlParams.get("id_agente")
+
+        axios.get(`http://localhost:8080/Coworkings/carregar/${idAgente}`)
+            .then((response) => {
+                if (response.status === 200) {
+                    const agente = response.data;
+
+                    // Substitua os valores dos elementos HTML
+                    document.getElementById('nome-centro').textContent = agente.nome;
+                    document.getElementById('estado').textContent = agente.estado;
+                    document.getElementById('cidade').textContent = agente.cidade;
+                    document.getElementById('endereco').textContent = agente.endereco;
+                    document.getElementById('cep').textContent = agente.cep;
+                    document.getElementById('descricao').textContent = agente.descricao;
+                    document.getElementById('data').textContent = agente.data;
+                    document.getElementById('tel').textContent = agente.telefone;
+                    document.getElementById('site-link').href = agente.link;
+                    document.getElementById('site-link').textContent = agente.link;
+                    document.getElementById('horario_funcionamento').textContent = agente.horario_funcionamento;
+                }
+            })
+            .catch((err) => {
+                alert(`Deu Errado: ${err.message}`);
+            });
+    </script>
+
+</body>
+</html>

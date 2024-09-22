@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Cadastros</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <a href="../index.html" class="home-button">
+                <img src="../../public/home.png" alt="Home" class="home-icon">
+            </a>
+            <h1 id="titulo">Centros de Inovação</h1>
+        </div>
+
+        <div class="controls">
+            <a id="link-botao" href="../../CentrosInovacao/cadastro/indexCentro.html" class="new-record-button">NOVO REGISTRO</a>
+            <div class="search-container">
+                <button class="search-button"></button>
+            </div>
+
+        </div>
+
+        <div class="content">
+            <table id="tabela">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
+                        <th>Endereco</th>
+                        <th>CEP</th>
+                        <th>Data de fundação</th>
+                        <th>Descrição</th>
+                        <th>Link</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<script type="text/javascript">
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const tipoAgente = urlParams.get("tipo_agente");
+
+    // Se for centro de inovação
+    if (tipoAgente === "CentrosInovacao"){
+
+        axios.get("http://localhost:8080/CentrosInovacao/carregar")
+            .then((response) => {
+                if (response.status === 200){
+
+                    const lista = response.data;
+
+                    for(const agente of lista){
+
+                        const linhasAcoes = `
+                        <div class = "acoes">
+                            <div class = "acoes-coluna">
+                                <a href="../../CentrosInovacao/cadastro/indexCentro.html?id_agente=${agente.id}">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
+                                </a>
+                            </div>
+                        </div>`;
+
+                        let linha = $("<tr/>");
+                        linha.append($("<td/>").html(linhasAcoes))
+                        linha.append($("<td/>").html(agente.id));
+                        linha.append($("<td/>").html(agente.nome));
+                        linha.append($("<td/>").html(agente.cidade));
+                        linha.append($("<td/>").html(agente.estado));
+                        linha.append($("<td/>").html(agente.endereco));
+                        linha.append($("<td/>").html(agente.cep));
+                        linha.append($("<td/>").html(agente.data));
+                        linha.append($("<td/>").html(agente.descricao));
+                        linha.append($("<td/>").html(agente.link));
+                        linha.append($("<td/>").html(agente.telefone));
+                        $(tabela).append(linha)
+
+                    }
+
+                }
+            })
+            .catch((err) => {
+                alert(`Erro: ${err.message}`)
+            })
+
+        $('#link-botao').attr('href', '../../CentrosInovacao/cadastro/indexCentro.html')
+        $('#titulo').text("Centros de Inovação")
+
+    // Se for Coworking
+    } else if (tipoAgente === "Coworkings"){
+
+        // Adicionado coluna ao cabeçalho da tabela
+        var header = $('#tabela thead tr');
+        header.append('<th>Horário de funcionamento</th>');
+
+        axios.get("http://localhost:8080/Coworkings/carregar")
+            .then((response) => {
+                if (response.status === 200){
+
+                    const lista = response.data;
+
+                    for(const agente of lista){
+
+                        const linhasAcoes = `
+                        <div class = "acoes">
+                            <div class = "acoes-coluna">
+                                <a href="../../CentrosInovacao/cadastro/indexCoworking.html?id_agente=${agente.id}">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
+                                </a>
+                            </div>
+                        </div>`;
+
+                        let linha = $("<tr/>");
+                        linha.append($("<td/>").html(linhasAcoes))
+                        linha.append($("<td/>").html(agente.id));
+                        linha.append($("<td/>").html(agente.nome));
+                        linha.append($("<td/>").html(agente.cidade));
+                        linha.append($("<td/>").html(agente.estado));
+                        linha.append($("<td/>").html(agente.endereco));
+                        linha.append($("<td/>").html(agente.cep));
+                        linha.append($("<td/>").html(agente.data));
+                        linha.append($("<td/>").html(agente.descricao));
+                        linha.append($("<td/>").html(agente.link));
+                        linha.append($("<td/>").html(agente.telefone));
+                        linha.append($("<td/>").html(agente.horario_funcionamento));
+                        $(tabela).append(linha)
+
+                    }
+
+                }
+            })
+            .catch((err) => {
+                alert(`Erro: ${err.message}`)
+            })
+
+        $('#link-botao').attr('href', '../../CentrosInovacao/cadastro/indexCoworking.html')
+        $('#titulo').text("Coworkings")
+
+    // Se for Parque Científico
+    } else {
+
+        // Adicionado coluna ao cabeçalho da tabela
+        var header = $('#tabela thead tr');
+        header.append('<th>Instituição Financeira</th>');
+
+        axios.get("http://localhost:8080/ParquesCientificos/carregar")
+            .then((response) => {
+                if (response.status === 200){
+
+                    const lista = response.data;
+
+                    for(const agente of lista){
+
+                        const linhasAcoes = `
+                        <div class = "acoes">
+                            <div class = "acoes-coluna">
+                                <a href="../../CentrosInovacao/cadastro/indexParqueCientifico.html?id_agente=${agente.id}">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
+                                </a>
+                            </div>
+                        </div>`;
+
+                        let linha = $("<tr/>");
+                        linha.append($("<td/>").html(linhasAcoes))
+                        linha.append($("<td/>").html(agente.id));
+                        linha.append($("<td/>").html(agente.nome));
+                        linha.append($("<td/>").html(agente.cidade));
+                        linha.append($("<td/>").html(agente.estado));
+                        linha.append($("<td/>").html(agente.endereco));
+                        linha.append($("<td/>").html(agente.cep));
+                        linha.append($("<td/>").html(agente.data));
+                        linha.append($("<td/>").html(agente.descricao));
+                        linha.append($("<td/>").html(agente.link));
+                        linha.append($("<td/>").html(agente.telefone));
+                        linha.append($("<td/>").html(agente.instituicao_financeira));
+                        $(tabela).append(linha)
+
+                    }
+
+                }
+            })
+            .catch((err) => {
+                alert(`Erro: ${err.message}`)
+            })
+
+        $('#link-botao').attr('href', '../../CentrosInovacao/cadastro/indexParqueCientifico.html')
+        $('#titulo').text("Parques Cientificos")
+
+    }
+
+</script>
+
+
+</body>
+</html>

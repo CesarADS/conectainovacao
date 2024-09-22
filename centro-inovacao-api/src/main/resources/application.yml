@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    #defer-datasource-initialization: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/bd_inovacao
+    username: root
+    password:
+    driverClassName: com.mysql.cj.jdbc.Driver
+  #sql:
+    #init:
+      #mode: always

@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fundo cinza claro */
+    color: #333; /* Texto escuro */
+}
+
+header {
+    background-color: rgba(10, 39, 64, 0.9); 
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Para posicionar o ícone corretamente */
+}
+
+.home-button {
+    position: absolute;
+    top: 50%;
+    left: 20px; /* Ajuste conforme necessário */
+    transform: translateY(-50%);
+    z-index: 10; /* Para garantir que o ícone fique acima do conteúdo */
+}
+
+.home-icon {
+    width: 40px;
+    height: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 60px; /* Adicione espaço à esquerda para o ícone */
+}
+
+.bandeira {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff; /* Fundo branco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2em;
+    color: #4CAF50; /* Verde */
+}
+
+.content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input::placeholder {
+    font-size: 1em;
+    color: #888;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    padding: 10px 20px;
+    background-color: #ff0000; /* Vermelho */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+/* Estilos para dropdowns */
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #fff; /* Fundo branco */
+    cursor: pointer; /* Cursor de ponteiro ao passar sobre */
+}
+
+select:focus {
+    outline: none; /* Remove a borda ao focar */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Adiciona sombra */
+}
