@@ -52,4 +52,24 @@ public class UsuarioService {
     }
 
 
+    public String cadastrarUsuario(UsuarioLoginRequest usuario) throws Exception{
+
+        Optional<Usuario> resultLogin
+                = usuarioRepository.findByLogin(usuario.getLogin());
+
+        if(resultLogin.isPresent()){
+            throw new Exception("Usuário já está cadastrado na base de dados!");
+        }
+
+        Usuario usuarioPersist = new Usuario();
+
+        usuarioPersist.setSenha(passwordEncoder.encode(usuario.getSenha()));
+
+        Usuario usuarioPersistResult = usuarioRepository.save(usuarioPersist);
+
+        return "Usuário cadastrado com sucesso!";
+
+    }
+
+
 }

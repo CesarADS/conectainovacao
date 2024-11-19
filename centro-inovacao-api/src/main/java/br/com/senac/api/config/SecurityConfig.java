@@ -30,9 +30,13 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/usuarios/cadastro").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/usuarios/carregar/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/CentrosInovacao/carregar").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/Coworkings/carregar").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/CentrosInovacao/carregar/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/Coworkings/carregar/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/ParquesCientificos/carregar").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/ParquesCientificos/carregar/{id}").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
