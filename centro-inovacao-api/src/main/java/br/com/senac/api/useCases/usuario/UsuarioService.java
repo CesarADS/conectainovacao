@@ -6,6 +6,7 @@ import br.com.senac.api.useCases.usuario.domains.UsuarioLoginRequest;
 import br.com.senac.api.useCases.usuario.domains.UsuarioResponseAuth;
 import br.com.senac.api.useCases.usuario.implement.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class UsuarioService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Value("${spring.security.expiration_time}")
+    private Long expirarionTime;
 
 
     public UsuarioResponseAuth loginUsuario(UsuarioLoginRequest usuarioLoginRequest) throws Exception {
@@ -42,7 +46,8 @@ public class UsuarioService {
 
             return new UsuarioResponseAuth(
                     usuario.getLogin(),
-                    token
+                    token,
+                    expirarionTime
             );
 
         }
@@ -64,8 +69,9 @@ public class UsuarioService {
         Usuario usuarioPersist = new Usuario();
 
         usuarioPersist.setSenha(passwordEncoder.encode(usuario.getSenha()));
+        usuarioPersist.setLogin(usuario.getLogin());
 
-        Usuario usuarioPersistResult = usuarioRepository.save(usuarioPersist);
+        usuarioRepository.save(usuarioPersist);
 
         return "Usuário cadastrado com sucesso!";
 

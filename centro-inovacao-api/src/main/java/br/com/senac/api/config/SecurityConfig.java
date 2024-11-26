@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/usuarios/cadastrar").permitAll()
                         .requestMatchers(HttpMethod.GET, "/CentrosInovacao/carregar").permitAll()
                         .requestMatchers(HttpMethod.GET, "/Coworkings/carregar").permitAll()
                         .requestMatchers(HttpMethod.GET, "/CentrosInovacao/carregar/{id}").permitAll()

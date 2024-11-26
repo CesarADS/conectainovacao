@@ -14,6 +14,12 @@ public class UsuarioResponseAuth {
         this.token = token;
     }
 
+    public UsuarioResponseAuth(String login, String token, Long expirarionTime) {
+        this.login = login;
+        this.token = token;
+        this.expirarionTime = expirarionTime;
+    }
+
     public String getLogin() {
         return login;
     }
