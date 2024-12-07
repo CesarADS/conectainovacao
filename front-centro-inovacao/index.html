@@ -1,43 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conecta Inovação</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="public/bandeira.png" alt="Bandeira de Santa Catarina" class="bandeira">
-            <h1>Conecta Inovação</h1>
-        </div>
-        <a onclick="autenticar()" class="admin-button">Área do Administrador</a>
-    </header>
-    <div class="container">
-        <div class="content">
-            <h2>Centros de Inovação, Parques Científicos e Coworkings</h2>
-            <p>Os Centros de Inovação, Parques Científicos e Coworkings facilitam a interação entre o setor acadêmico, a indústria e o governo, promovendo projetos inovadores e o desenvolvimento de novas tecnologias.</p>
-            <div class="options">
-                <a href="CentrosPublic/index.html?tipo_agente=CentrosInovacao" class="botao">Centros de Inovação</a>
-                <a href="CentrosPublic/index.html?tipo_agente=ParquesCientificos" class="botao">Parques Científicos</a>
-                <a href="CentrosPublic/index.html?tipo_agente=Coworkings" class="botao">Coworkings</a>
-            </div>
-        </div>
-    </div>
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conecta Inovação - React + JWT</title>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    rel="stylesheet"
+/>
+<link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    rel="stylesheet"
+/>
 
-<script type="text/javascript">
-
-    function autenticar(){
-        let resposta = prompt("Digite a senha do administrador!")
-        if (resposta === "admin"){
-            window.location.href = 'admin/index.html'
-        } else {
-            alert("Senha incorreta!")
-        }
-    }
-
-</script>
-
-</body>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

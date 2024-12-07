@@ -1,0 +1,52 @@
+.admin-body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-image: url('/fundo.png'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+.container-admin {
+    text-align: center;
+    padding: 50px;
+    background-color:  #F9FDFF;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .content-admin h2 {
+    color: rgba(10, 39, 64, 0.8);
+    margin: 2rem 0;
+    font-size: 2em;
+  }
+  
+  .content-admin p {
+    font-size: 1.2em;
+    margin: 20px 0;
+    line-height: 1.5;
+  }
+  
+  .options-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  @media (min-width: 600px) {
+    .options-admin {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+  }
+
+  

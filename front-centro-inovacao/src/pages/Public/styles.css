@@ -1,0 +1,51 @@
+.home-body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-image: url('/fundo.png'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+.container {
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(10, 39, 64, 0.8); 
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .content h2 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
+  
+  .content p {
+    font-size: 1.2em;
+    margin: 20px 0;
+    line-height: 1.5;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  @media (min-width: 600px) {
+    .options {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+  }
+
+  
