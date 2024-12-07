@@ -11,4 +11,4 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
   security:
     secret: "jwt-inovacao"
-    expiration_time: 1
+    expiration_time: 5
