@@ -6,12 +6,12 @@ import br.com.senac.api.useCases.usuario.domains.UsuarioResponseAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/usuarios")
+@CrossOrigin
+
 public class UsuariosController {
 
     @Autowired
@@ -40,6 +40,18 @@ public class UsuariosController {
             String response = usuarioService.cadastrarUsuario(usuario);
             return ResponseEntity.ok(response);
 
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+
+    @GetMapping("/verificarLogin")
+    public ResponseEntity<?> verificarLogin(){
+
+        try {
+            return ResponseEntity.ok(true);
         } catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.badRequest().body(e.getMessage());
