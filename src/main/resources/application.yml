@@ -1,14 +1,23 @@
 spring:
   jpa:
-    database: mysql
+    # A propriedade 'database' não é mais necessária, pois o Hibernate infere a partir do dialeto.
+    # database: postgresql
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        # Define o dialeto específico para o PostgreSQL. Essencial para o Hibernate gerar o SQL correto.
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/bd_inovacao
-    username: root
-    password:
-    driverClassName: com.mysql.cj.jdbc.Driver
+    # URL de conexão JDBC para o PostgreSQL. Note a mudança de 'mysql' para 'postgresql' e a porta padrão '5432'.
+    url: jdbc:postgresql://localhost:5432/bd_inovacao
+    # O usuário padrão do PostgreSQL é 'postgres', diferente do 'root' do MySQL.
+    username: postgres
+    # Coloque aqui a senha do seu usuário do PostgreSQL.
+    password: Sen@c2023
+    # Driver JDBC do PostgreSQL.
+    driverClassName: org.postgresql.Driver
   security:
     secret: "jwt-inovacao"
     expiration_time: 5
